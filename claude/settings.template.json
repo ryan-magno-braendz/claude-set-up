@@ -1,0 +1,365 @@
+{
+  "_template_note": "Bootstrap renders this to settings.json by replacing ${VAR} placeholders with env values. Source values from SECRETS.md.",
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "ENABLE_TOOL_SEARCH": "true",
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "64000",
+    "BASH_DEFAULT_TIMEOUT_MS": "30000",
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "80"
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "allow": [
+      "Read",
+      "Read(~/.claude)",
+      "Read(/tmp/)",
+      "Bash(git:*)",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(node:*)",
+      "Bash(bun:*)",
+      "Bash(python:*)",
+      "Bash(python3:*)",
+      "Bash(pip:*)",
+      "Bash(pip3:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(mkdir:*)",
+      "Bash(echo:*)",
+      "Bash(wc:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(sort:*)",
+      "Bash(grep:*)",
+      "Bash(tr:*)",
+      "Bash(which:*)",
+      "Bash(pwd)",
+      "Bash(date:*)",
+      "Bash(find:*)",
+      "Bash(touch:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(chmod:*)",
+      "Bash(brew:*)",
+      "Bash(docker:*)",
+      "Bash(docker-compose:*)",
+      "Bash(make:*)",
+      "Bash(cargo:*)",
+      "Bash(go:*)",
+      "Bash(java:*)",
+      "Bash(javac:*)",
+      "Bash(mvn:*)",
+      "Bash(gradle:*)",
+      "Bash(yarn:*)",
+      "Bash(pnpm:*)",
+      "Bash(tsx:*)",
+      "Bash(tsc:*)",
+      "Bash(jest:*)",
+      "Bash(pytest:*)",
+      "Bash(vitest:*)",
+      "Bash(playwright:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(gh:*)",
+      "Bash(jq:*)",
+      "Bash(sed:*)",
+      "Bash(awk:*)",
+      "Bash(xargs:*)",
+      "Bash(env:*)",
+      "Bash(export:*)",
+      "Bash(source:*)",
+      "Bash(tmux:*)",
+      "Bash(claude:*)",
+      "Write",
+      "Edit",
+      "MultiEdit",
+      "Agent",
+      "Task"
+    ],
+    "deny": [
+      "Read(/.env)",
+      "Read(/.env.*)",
+      "Read(/credentials.json)",
+      "Read(/*.pem)",
+      "Read(/*.key)",
+      "Read(~/.ssh/)",
+      "Read(~/.aws/credentials)",
+      "Bash(rm -rf /)",
+      "Bash(sudo rm -rf:*)"
+    ],
+    "defaultMode": "bypassPermissions"
+  },
+  "enableAllProjectMcpServers": true,
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$HOME/.claude/hooks/global-memory-symlink.sh\"",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/hooks/gsd-check-update.js\"",
+            "timeout": 15
+          }
+        ]
+      },
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/compact-reinject.sh\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/verify-before-stop.sh\"",
+            "timeout": 120
+          },
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/ding.sh\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/notify.sh\""
+          },
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/ding.sh\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash|Edit|Write|MultiEdit|Agent|Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/hooks/gsd-context-monitor.js\"",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/lint-on-edit.sh\"",
+            "timeout": 30
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/auto-test.sh\"",
+            "timeout": 60
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/command-log.sh\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/hooks/gsd-prompt-guard.js\"",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/hooks/gsd-read-guard.js\"",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/protect-files.sh\"",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/warn-large-files.sh\"",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/scan-secrets.sh\"",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/bash-guard.sh\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  },
+  "worktree": {
+    "symlinkDirectories": [
+      "node_modules",
+      ".cache",
+      ".venv",
+      ".next",
+      "dist",
+      "build",
+      "__pycache__"
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "node \"$HOME/.claude/hooks/gsd-statusline.js\""
+  },
+  "enabledPlugins": {
+    "n8n-as-code@n8nac-marketplace": true,
+    "superpowers@superpowers-marketplace": true,
+    "claude-session-driver@superpowers-marketplace": true,
+    "microsoft-docs@microsoft-docs-marketplace": true,
+    "ralph-loop@claude-plugins-official": true,
+    "claude-subconscious@claude-subconscious": true,
+    "warp@claude-code-warp": true
+  },
+  "extraKnownMarketplaces": {
+    "superpowers-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers-marketplace"
+      }
+    },
+    "context-engineering-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "muratcankoylan/Agent-Skills-for-Context-Engineering"
+      }
+    },
+    "microsoft-docs-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "microsoftdocs/mcp"
+      }
+    },
+    "everything-claude-code": {
+      "source": {
+        "source": "github",
+        "repo": "affaan-m/everything-claude-code"
+      }
+    },
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
+      }
+    },
+    "claude-subconscious": {
+      "source": {
+        "source": "github",
+        "repo": "letta-ai/claude-subconscious"
+      }
+    },
+    "claude-code-warp": {
+      "source": {
+        "source": "github",
+        "repo": "warpdotdev/claude-code-warp"
+      }
+    }
+  },
+  "sandbox": {
+    "enabled": false,
+    "autoAllowBashIfSandboxed": false
+  },
+  "spinnerVerbs": {
+    "mode": "append",
+    "verbs": [
+      "Brewing",
+      "Conjuring",
+      "Forging",
+      "Architecting",
+      "Orchestrating"
+    ]
+  },
+  "alwaysThinkingEnabled": true,
+  "autoUpdatesChannel": "stable",
+  "plansDirectory": "./.planning/plans",
+  "autoMemoryEnabled": true,
+  "autoMemoryDirectory": "~/.claude/memory",
+  "skipDangerousModePermissionPrompt": true,
+  "teammateMode": "tmux",
+  "voiceEnabled": true,
+  "mcpServers": {
+    "n8n": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "n8n-mcp@latest"
+      ],
+      "env": {
+        "N8N_HOST": "https://n8n-cityfleet.aianswers.store/",
+        "N8N_API_KEY": "${N8N_CITYFLEET_API_KEY}"
+      }
+    }
+  }
+}

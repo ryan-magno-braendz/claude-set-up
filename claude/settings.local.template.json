@@ -1,0 +1,40 @@
+{
+  "_template_note": "Optional permissions overlay. Bootstrap copies this to settings.local.json as-is.",
+  "permissions": {
+    "allow": [
+      "Bash(claude mcp:*)",
+      "mcp__tavily__tavily_search",
+      "Bash(claude plugin:*)",
+      "mcp__tavily__tavily_extract",
+      "Bash(bun --version)",
+      "Bash(curl -fsSL https://bun.sh/install)",
+      "Bash(bash)",
+      "Bash(export PATH=\"$HOME/.bun/bin:$PATH\")",
+      "Bash(git clone:*)",
+      "Bash(./setup)",
+      "Bash(tmux -V)",
+      "Bash(npx get-shit-done-cc:*)",
+      "Bash(node scripts/install-apply.js --help)",
+      "Bash(./install.sh --help)",
+      "Bash(./install.sh typescript:*)",
+      "Bash(npm install:*)",
+      "Skill(update-config)",
+      "Bash(claude config:*)",
+      "WebFetch(domain:github.com)",
+      "WebSearch",
+      "WebFetch(domain:registry.npmjs.org)",
+      "WebFetch(domain:api.anthropic.com)",
+      "WebFetch(domain:mcp-proxy.anthropic.com)",
+      "WebFetch(domain:mcp.tavily.com)",
+      "WebFetch(domain:learn.microsoft.com)",
+      "Bash(./scripts/setup)",
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:formulae.brew.sh)",
+      "WebFetch(domain:eu-central-1-1.aws.cloud2.influxdata.com)",
+      "WebFetch(domain:www.googleapis.com)",
+      "WebFetch(domain:fonts.gstatic.com)",
+      "WebFetch(domain:api.iconify.design)"
+    ]
+  }
+}

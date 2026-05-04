@@ -1,0 +1,23 @@
+{
+  "_template_note": "Bootstrap renders this to .mcp.json by replacing ${VAR} placeholders with env values. Source values from SECRETS.md.",
+  "mcpServers": {
+    "tavily": {
+      "command": "npx",
+      "args": ["-y", "tavily-mcp@latest"],
+      "env": {
+        "TAVILY_API_KEY": "${TAVILY_API_KEY}"
+      }
+    },
+    "n8n": {
+      "command": "n8n-mcp",
+      "args": [],
+      "env": {
+        "MCP_MODE": "stdio",
+        "LOG_LEVEL": "error",
+        "DISABLE_CONSOLE_OUTPUT": "true",
+        "N8N_API_URL": "https://n8n.srv1403945.hstgr.cloud",
+        "N8N_API_KEY": "${N8N_HOSTINGER_API_KEY}"
+      }
+    }
+  }
+}

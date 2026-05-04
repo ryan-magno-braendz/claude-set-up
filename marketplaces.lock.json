@@ -1,0 +1,13 @@
+{
+  "_note": "Plugin marketplaces registered before plugin install. Bootstrap calls 'claude plugin marketplace add' for each repo.",
+  "marketplaces": [
+    { "name": "n8nac-marketplace",               "repo": "EtienneLescot/n8n-as-code" },
+    { "name": "superpowers-marketplace",         "repo": "obra/superpowers-marketplace" },
+    { "name": "context-engineering-marketplace", "repo": "muratcankoylan/Agent-Skills-for-Context-Engineering" },
+    { "name": "microsoft-docs-marketplace",      "repo": "microsoftdocs/mcp" },
+    { "name": "everything-claude-code",          "repo": "affaan-m/everything-claude-code" },
+    { "name": "claude-plugins-official",         "repo": "anthropics/claude-plugins-official" },
+    { "name": "claude-subconscious",             "repo": "letta-ai/claude-subconscious" },
+    { "name": "claude-code-warp",                "repo": "warpdotdev/claude-code-warp" }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "philosophy-of-love",
+  "description": "A healthy debate on the philosophy of love between 4 philosophers",
+  "createdAt": 1773496425437,
+  "leadAgentId": "team-lead@philosophy-of-love",
+  "leadSessionId": "5dd266ec-6b68-4bce-89e4-e9bc93995c3a",
+  "members": [
+    {
+      "agentId": "team-lead@philosophy-of-love",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "model": "claude-opus-4-6[1m]",
+      "joinedAt": 1773496425437,
+      "tmuxPaneId": "",
+      "cwd": "/Users/gabrielmagno",
+      "subscriptions": []
+    }
+  ]
+}

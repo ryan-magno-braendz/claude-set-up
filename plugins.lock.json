@@ -1,0 +1,40 @@
+{
+  "_note": "Locked to versions captured from ~/.claude/plugins/installed_plugins.json on the source macOS machine. Bootstrap installs in this order.",
+  "plugins": [
+    {
+      "id": "n8n-as-code@n8nac-marketplace",
+      "version": "0.2.0",
+      "gitCommitSha": "2a65fdff7a5d63f0cda171ad6dd0d6ee88cc317e"
+    },
+    {
+      "id": "superpowers@superpowers-marketplace",
+      "version": "5.0.5",
+      "gitCommitSha": "8ea39819eed74fe2a0338e71789f06b30e953041"
+    },
+    {
+      "id": "claude-session-driver@superpowers-marketplace",
+      "version": "1.0.1",
+      "gitCommitSha": "c60d2bda21ff0786e3044506b13d2d307676c1ef"
+    },
+    {
+      "id": "microsoft-docs@microsoft-docs-marketplace",
+      "version": "0.3.1",
+      "gitCommitSha": "4fa4d3569fad7b21fec0ff5572f2ca96860d4b2a"
+    },
+    {
+      "id": "ralph-loop@claude-plugins-official",
+      "version": "1.0.0",
+      "gitCommitSha": "61c0597779bd2d670dcd4fbbf37c66aa19eb2ce6"
+    },
+    {
+      "id": "claude-subconscious@claude-subconscious",
+      "version": "2.0.2",
+      "gitCommitSha": "9d5a7e9c274f429f7657b58c9b1a9cb2e56cd0b3"
+    },
+    {
+      "id": "warp@claude-code-warp",
+      "version": "2.0.0",
+      "gitCommitSha": "c2fa0dde50076570c7db5e72d8663558a96a6502"
+    }
+  ]
+}
