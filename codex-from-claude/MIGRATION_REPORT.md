@@ -3,7 +3,7 @@
 Date: 2026-05-09
 Source: `windows-claude-code/claude/` (Claude Code config mirror).
 Target: `codex-from-claude/home/` (Codex CLI config payload).
-Approach: hand-port (cc2codex was not used; see `PLAN.md` section 3 for the reasoning).
+Approach: hand-port (cc2codex was not used; the source mirror lives at `claude/` rather than `~/.claude/`, so the tool's expected layout did not apply, and the bespoke disposition tables in this report were easier to generate by hand).
 
 ## Summary
 

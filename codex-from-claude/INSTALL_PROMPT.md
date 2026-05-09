@@ -29,8 +29,6 @@ The repo at CWD contains:
 - windows-claude-code/ (preserved, do not modify)
 - codex-from-claude/BOOTSTRAP.md (authoritative install reference)
 - codex-from-claude/MIGRATION_REPORT.md (what was ported, what was dropped)
-- codex-from-claude/AUDIT_REPORT.md (deferred items)
-- codex-from-claude/PLAN.md
 - codex-from-claude/home/ (target setup contents: AGENTS.md, CLAUDE.md, config.toml, hooks.json, hooks/, skills/, agents/, rules/, memory/, reference/)
 - codex-from-claude/scripts/setup-codex.sh (POSIX, including WSL)
 - codex-from-claude/scripts/setup-codex.ps1 (native Windows PowerShell)
@@ -61,8 +59,6 @@ Verify environment before doing anything. If any check fails, stop and report wh
        windows-claude-code/
        codex-from-claude/BOOTSTRAP.md
        codex-from-claude/MIGRATION_REPORT.md
-       codex-from-claude/AUDIT_REPORT.md
-       codex-from-claude/PLAN.md
        codex-from-claude/home/AGENTS.md
        codex-from-claude/home/config.toml
        codex-from-claude/home/hooks.json
@@ -97,11 +93,9 @@ Read the supporting docs before installing. This grounds the install in actual f
 
 1. Read codex-from-claude/BOOTSTRAP.md end to end. Note: prerequisites, install commands, env var list, verification commands with expected output, troubleshooting.
 
-2. Skim codex-from-claude/AUDIT_REPORT.md. Capture the "Flagged for user decision" section (3 items). Do not act on them now. Surface them at the end.
+2. Skim codex-from-claude/MIGRATION_REPORT.md table-of-contents to understand what was ported, what was dropped, what is in codex-from-claude/home/reference/ (manual review material, not auto-installed).
 
-3. Skim codex-from-claude/MIGRATION_REPORT.md table-of-contents to understand what was ported, what was dropped, what is in codex-from-claude/home/reference/ (manual review material, not auto-installed).
-
-4. Glance at codex-from-claude/home/config.toml to confirm the three MCP servers (tavily, n8n_hostinger, n8n_cityfleet) and the env-var names they reference. Cross-check against the env-var table in BOOTSTRAP.md.
+3. Glance at codex-from-claude/home/config.toml to confirm the three MCP servers (tavily, n8n_hostinger, n8n_cityfleet) and the env-var names they reference. Cross-check against the env-var table in BOOTSTRAP.md.
 </orient>
 
 <install>
@@ -219,7 +213,7 @@ If any post-restart check fails, see codex-from-claude/BOOTSTRAP.md Troubleshoot
 </post_restart_verification>
 
 <surface>
-From AUDIT_REPORT.md "Flagged for user decision," present the three items as a one-sentence-each summary with the recommended next action. Do not act on them. Just surface.
+Surface the three items below to the user as a one-sentence-each summary with the recommended next action. Do not act on them. Just surface.
 
 1. Slash command porting: 90 plus commands in codex-from-claude/home/reference/commands/. Pick the few you actually use, port to home/skills/<name>/SKILL.md.
 

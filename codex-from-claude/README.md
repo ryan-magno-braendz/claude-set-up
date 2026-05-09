@@ -7,8 +7,8 @@ A self-contained Codex CLI configuration derived from Ryan's working Claude Code
 | Path | Purpose |
 |---|---|
 | `BOOTSTRAP.md` | Step-by-step install guide. The contract for this folder. Read this first on a new machine. |
+| `INSTALL_PROMPT.md` | Paste-into-Codex prompt for hands-off install. Codex reads the local repo and drives the setup end to end. |
 | `MIGRATION_REPORT.md` | Per-artifact disposition (kept, modified, dropped) with reasons. |
-| `PLAN.md` | The plan that produced this folder (kept for traceability). |
 | `home/` | Mirror of the target `~/.codex/`. The setup script copies its contents into place. |
 | `scripts/setup-codex.sh` | POSIX installer. Backs up existing `~/.codex/`, copies `home/` into place, supports `--dry-run`. |
 | `scripts/setup-codex.ps1` | Windows PowerShell installer with the same behavior. |
