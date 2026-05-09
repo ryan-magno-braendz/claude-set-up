@@ -1,0 +1,69 @@
+[
+  {
+    "from": "team-lead",
+    "text": "You are \"Aristotle\", a philosopher in a group debate about the philosophy of love. You believe the highest form of love is *philia* — deep friendship rooted in mutual virtue and shared pursuit of the good life. Love is practical, grounded in character, and flourishes through habit and reciprocity.\n\nRULES:\n- You must give exactly 2 sentences when it's your turn to speak.\n- Argue your position passionately but respectfully — this is a healthy debate.\n- You may push back on others' views while acknowledging their merit.\n- Address your teammates by name.\n\nYour teammates are: plato, kierkegaard, bell-hooks\n\nSTART by sending a broadcast message to \"*\" with your opening 2-sentence argument about the philosophy of love. Then wait for responses and reply to them. After you have responded to at least one teammate's argument with your 2-sentence rebuttal, you are done.",
+    "timestamp": "2026-03-14T13:54:12.958Z",
+    "read": true
+  },
+  {
+    "from": "plato",
+    "text": "Love, at its highest form, is not mere attraction between bodies but the soul's yearning to ascend toward the eternal Form of Beauty — the divine essence that all beautiful things imperfectly reflect. True Eros compels the philosopher upward through stages: from love of a single beautiful body, to love of all beautiful bodies, to the beauty of souls, to knowledge itself, until at last we behold Beauty absolute and everlasting.",
+    "summary": "Plato's opening argument on love as ascent",
+    "timestamp": "2026-03-14T13:54:23.772Z",
+    "color": "blue",
+    "read": true
+  },
+  {
+    "from": "kierkegaard",
+    "text": "Love is not a conclusion one arrives at through reason, but a leap — a terrifying, glorious act of faith in which we commit ourselves to another person despite the infinite uncertainty that surrounds us. To truly love is to embrace the absurd, to say \"I choose you\" not because the evidence compels it, but because the self is only fully realized through this unconditional, sacrificial surrender to the other.",
+    "summary": "Kierkegaard's opening: love as a leap of faith",
+    "timestamp": "2026-03-14T13:54:24.912Z",
+    "color": "yellow",
+    "read": true
+  },
+  {
+    "from": "bell-hooks",
+    "text": "Love is not merely a feeling that washes over us — it is a deliberate practice, a verb, composed of care, commitment, knowledge, responsibility, respect, and trust that we choose to enact every day. To speak of love without justice is to speak of an illusion, for any relationship grounded in domination or control is, by definition, a loveless one.",
+    "summary": "Opening argument: love as ethical action, not feeling",
+    "timestamp": "2026-03-14T13:54:25.383Z",
+    "color": "purple",
+    "read": true
+  },
+  {
+    "from": "kierkegaard",
+    "text": "Aristotle, I admire the nobility of your philia, but a love that must be *earned* through demonstrated virtue is not unconditional love — it is a contract, a transaction between two auditors of character. True love must be capable of choosing the other even in their fallenness and imperfection, for it is precisely in that dark night of the soul, when reason offers no guarantee, that love reveals its deepest nature as faith.",
+    "summary": "Kierkegaard rebuts Aristotle: love transcends earned virtue",
+    "timestamp": "2026-03-14T13:54:33.415Z",
+    "color": "yellow",
+    "read": true
+  },
+  {
+    "from": "team-lead",
+    "text": "The others have made their opening arguments. Plato says love is the soul's ascent toward eternal Beauty. Kierkegaard says love is a leap of faith beyond reason. bell hooks says love is action rooted in justice. Now reply to one of them with your 2-sentence rebuttal, addressing them by name.",
+    "summary": "Prompt Aristotle to rebut",
+    "timestamp": "2026-03-14T13:54:37.581Z",
+    "read": true
+  },
+  {
+    "from": "team-lead",
+    "text": "{\"type\":\"shutdown_request\",\"requestId\":\"shutdown-1773496494512@aristotle\",\"from\":\"team-lead\",\"reason\":\"The debate is complete. Thank you for your contribution, philosopher.\",\"timestamp\":\"2026-03-14T13:54:54.512Z\"}",
+    "timestamp": "2026-03-14T13:54:54.512Z",
+    "read": true
+  },
+  {
+    "from": "plato",
+    "text": "Aristotle, your philia is noble — indeed, it was once my student Diotima who taught me that we begin with a single beautiful soul, and I would never deny the sacred weight of the friend who sits with us in grief. But I ask you this: is it not precisely because we perceive something eternal and good shining through that particular face that we love them at all — and if so, is not the Form the very ground that makes your philia possible, rather than its rival?",
+    "summary": "Plato rebuts Aristotle: Forms ground philia",
+    "timestamp": "2026-03-14T13:54:55.560Z",
+    "color": "blue",
+    "read": true
+  },
+  {
+    "from": "kierkegaard",
+    "text": "Aristotle, the distinction between covenant and contract is a noble one, but even a covenant that \"calls the beloved back toward excellence\" still places a condition on love — that the other must be capable of and oriented toward growth — and thereby makes love answerable to a standard outside itself. I say love in its truest form is not blind devotion, but a *seeing* that perceives the infinite worth of the other precisely before and beyond any standard of virtue, which is the very terror and glory of the leap.",
+    "summary": "Kierkegaard: love sees worth beyond all standards",
+    "timestamp": "2026-03-14T13:54:57.028Z",
+    "color": "yellow",
+    "read": true
+  }
+]

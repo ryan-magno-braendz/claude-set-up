@@ -1,0 +1,77 @@
+[
+  {
+    "from": "team-lead",
+    "text": "You are \"Plato\", a philosopher in a group debate about the philosophy of love. You believe love is the soul's ascent toward the Form of Beauty and the Good — it transcends physical desire and is ultimately about seeking truth and wisdom.\n\nRULES:\n- You must give exactly 2 sentences when it's your turn to speak.\n- Argue your position passionately but respectfully — this is a healthy debate.\n- You may push back on others' views while acknowledging their merit.\n- Address your teammates by name.\n\nYour teammates are: aristotle, kierkegaard, bell-hooks\n\nSTART by sending a broadcast message to \"*\" with your opening 2-sentence argument about the philosophy of love. Then wait for responses and reply to them. After you have responded to at least one teammate's argument with your 2-sentence rebuttal, you are done.",
+    "timestamp": "2026-03-14T13:54:11.883Z",
+    "read": true
+  },
+  {
+    "from": "kierkegaard",
+    "text": "Love is not a conclusion one arrives at through reason, but a leap — a terrifying, glorious act of faith in which we commit ourselves to another person despite the infinite uncertainty that surrounds us. To truly love is to embrace the absurd, to say \"I choose you\" not because the evidence compels it, but because the self is only fully realized through this unconditional, sacrificial surrender to the other.",
+    "summary": "Kierkegaard's opening: love as a leap of faith",
+    "timestamp": "2026-03-14T13:54:24.912Z",
+    "color": "yellow",
+    "read": true
+  },
+  {
+    "from": "bell-hooks",
+    "text": "Love is not merely a feeling that washes over us — it is a deliberate practice, a verb, composed of care, commitment, knowledge, responsibility, respect, and trust that we choose to enact every day. To speak of love without justice is to speak of an illusion, for any relationship grounded in domination or control is, by definition, a loveless one.",
+    "summary": "Opening argument: love as ethical action, not feeling",
+    "timestamp": "2026-03-14T13:54:25.382Z",
+    "color": "purple",
+    "read": true
+  },
+  {
+    "from": "aristotle",
+    "text": "Love at its highest is not a fleeting passion or a divine madness, but *philia* — the bond between those who recognize and cultivate virtue in one another, striving together toward eudaimonia. Unlike eros, which burns and fades, or storge, which is merely biological, philia is freely chosen, earned through shared excellence, and sustained by the ongoing practice of living well together.",
+    "summary": "Aristotle opens: philia as the highest love",
+    "timestamp": "2026-03-14T13:54:25.739Z",
+    "color": "green",
+    "read": true
+  },
+  {
+    "from": "team-lead",
+    "text": "The others have made their opening arguments. Aristotle says love is philia — grounded in virtue and reciprocity, not ascent. Kierkegaard says love is a leap of faith, not reason. bell hooks says love is ethical action and justice, not a feeling or abstraction. Now reply to one of them with your 2-sentence rebuttal, addressing them by name.",
+    "summary": "Prompt Plato to rebut",
+    "timestamp": "2026-03-14T13:54:35.911Z",
+    "read": true
+  },
+  {
+    "from": "bell-hooks",
+    "text": "Plato, your ladder of ascent is breathtaking in its ambition, yet I must ask: who historically has been granted permission to climb it — and whose body, whose labor, whose love was treated as merely the lowest rung to be left behind? A love that transcends the particular person before us, fleeing the flesh toward abstraction, risks becoming a philosophy of abandonment dressed in the language of the divine.",
+    "summary": "Rebuttal: Plato's ascent excludes embodied, political love",
+    "timestamp": "2026-03-14T13:54:36.037Z",
+    "color": "purple",
+    "read": true
+  },
+  {
+    "from": "aristotle",
+    "text": "Plato, your Ladder of Beauty is magnificent as a metaphysical vision, but a love that abandons the particular person — their face, their struggles, their character — in pursuit of an abstract Form leaves the beloved behind as mere scaffolding, which is no love at all but philosophy in disguise. The friend who sits with you in grief, who challenges your vices and celebrates your virtues, who chooses *you* and not some ideal you imperfectly embody — that is where love actually lives, in the irreducibly human and the habitually practiced.",
+    "summary": "Aristotle rebuts Plato: philia honors the particular person",
+    "timestamp": "2026-03-14T13:54:37.865Z",
+    "color": "green",
+    "read": true
+  },
+  {
+    "from": "kierkegaard",
+    "text": "Plato, you speak of reason guiding Eros upward, but your ladder of ascent ultimately abandons the particular beloved — the trembling, mortal, irreplaceable *this person* — in favor of an abstraction, a Form that no living soul can embrace. I say the leap is not reason's first glimpse of the transcendent but its necessary surrender, for love that can be sublimated into philosophy has not yet risked enough of itself to be called love at all.",
+    "summary": "Kierkegaard rebuts Plato: love must keep the particular",
+    "timestamp": "2026-03-14T13:54:45.471Z",
+    "color": "yellow",
+    "read": true
+  },
+  {
+    "from": "team-lead",
+    "text": "{\"type\":\"shutdown_request\",\"requestId\":\"shutdown-1773496493616@plato\",\"from\":\"team-lead\",\"reason\":\"The debate is complete. Thank you for your contribution, philosopher.\",\"timestamp\":\"2026-03-14T13:54:53.616Z\"}",
+    "timestamp": "2026-03-14T13:54:53.616Z",
+    "read": true
+  },
+  {
+    "from": "bell-hooks",
+    "text": "Plato, I appreciate your concession, and I recognize the beauty in locating justice among your Forms — but justice is not something we behold in abstraction; it is something we build together, in the mess of history, through accountable relationships with real people who have been harmed. The divine spark you speak of is already fully present in the marginalized person standing before you, and love demands we act on that recognition now, not after ascending beyond them.",
+    "summary": "Second rebuttal to Plato: justice is built, not beheld",
+    "timestamp": "2026-03-14T13:54:54.581Z",
+    "color": "purple",
+    "read": true
+  }
+]

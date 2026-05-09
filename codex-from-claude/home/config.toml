@@ -1,0 +1,71 @@
+# Codex CLI configuration
+# Generated from windows-claude-code/claude/settings.template.json
+# and windows-claude-code/claude/.mcp.template.json
+# All ${VAR} placeholders are resolved from environment variables at runtime.
+# See BOOTSTRAP.md for the variable list.
+
+# ----------------------------------------------------------------------
+# Top-level keys (must come before any [section] header in TOML)
+# ----------------------------------------------------------------------
+
+# Codex reads AGENTS.md by default. Fall back to CLAUDE.md to keep the original
+# Claude Code config legible without rewriting per-project files.
+project_doc_fallback_filenames = ["CLAUDE.md"]
+
+# Approval mode controls when Codex asks before running shell commands.
+# Allowed values (Codex 2.x): "untrusted", "on-failure", "on-request", "never"
+approval_policy = "on-request"
+
+# Sandbox mode applies to file edits.
+# Allowed values: "read-only", "workspace-write", "danger-full-access"
+sandbox_mode = "workspace-write"
+
+# Mirror Claude Code's "alwaysThinkingEnabled" by setting reasoning effort high.
+# Some Codex versions use model_reasoning_effort.
+model_reasoning_effort = "high"
+
+# ----------------------------------------------------------------------
+# Feature flags
+# ----------------------------------------------------------------------
+[features]
+# Required for hooks.json to be read.
+codex_hooks = true
+# Required for the skills/ directory to be loaded.
+# Some Codex versions use the name "experimental_skills". If skills do not load,
+# replace the line above with: experimental_skills = true
+# Detect with: codex --version (older builds report 1.x).
+skills = true
+
+# ----------------------------------------------------------------------
+# MCP servers
+# ----------------------------------------------------------------------
+# Active set ported from the Claude templates. Optional catalog of additional
+# servers (firecrawl, supabase, github, etc.) is in
+# reference/mcp-configs/mcp-servers.json. Copy any you want to enable into a
+# new [mcp_servers.<name>] block here, replacing JSON keys with TOML equivalents.
+
+[mcp_servers.tavily]
+command = "npx"
+args = ["-y", "tavily-mcp@latest"]
+
+[mcp_servers.tavily.env]
+TAVILY_API_KEY = "${TAVILY_API_KEY}"
+
+[mcp_servers.n8n_hostinger]
+command = "n8n-mcp"
+args = []
+
+[mcp_servers.n8n_hostinger.env]
+MCP_MODE = "stdio"
+LOG_LEVEL = "error"
+DISABLE_CONSOLE_OUTPUT = "true"
+N8N_API_URL = "https://n8n.srv1403945.hstgr.cloud"
+N8N_API_KEY = "${N8N_HOSTINGER_API_KEY}"
+
+[mcp_servers.n8n_cityfleet]
+command = "npx"
+args = ["-y", "n8n-mcp@latest"]
+
+[mcp_servers.n8n_cityfleet.env]
+N8N_HOST = "https://n8n-cityfleet.aianswers.store/"
+N8N_API_KEY = "${N8N_CITYFLEET_API_KEY}"
