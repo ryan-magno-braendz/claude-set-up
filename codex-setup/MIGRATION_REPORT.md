@@ -2,7 +2,7 @@
 
 Date: 2026-05-09
 Source: `windows-claude-code/claude/` (Claude Code config mirror).
-Target: `codex-from-claude/home/` (Codex CLI config payload).
+Target: `codex-setup/home/` (Codex CLI config payload).
 Approach: hand-port (cc2codex was not used; the source mirror lives at `claude/` rather than `~/.claude/`, so the tool's expected layout did not apply, and the bespoke disposition tables in this report were easier to generate by hand).
 
 ## Summary
@@ -35,7 +35,7 @@ Included from live `~/.codex`:
 
 Excluded intentionally:
 
-- Notification hooks and native notification config.
+- Permission-request notification hook, `notify.sh`, and native notification config. Stop `ding.sh` is retained and made portable for Windows Git Bash, macOS, and POSIX terminal bell fallback.
 - `auth.json`, `.env`, API keys, login state, session history, logs, SQLite runtime DBs, shell snapshots, temporary directories other than the referenced bundled marketplace, and installation IDs.
 - Mac-only project trust entries and hook trust hashes.
 
@@ -66,7 +66,7 @@ Source: `windows-claude-code/claude/settings.template.json` `hooks` block, plus 
 | `Stop` (1 entry, 2 commands) | `home/hooks.json` `Stop` (1 entry, 2 commands) | kept | Same path rewrite. |
 | `PostToolUse` (4 entries) | `home/hooks.json` `PostToolUse` (4 entries) | kept | Same path rewrite. |
 | `PreToolUse` (6 entries) | `home/hooks.json` `PreToolUse` (6 entries) | kept | Same path rewrite. |
-| `Notification` (1 entry, 2 commands: notify.sh, ding.sh) | not in `hooks.json` | dropped | Codex does not expose a Notification event. The script files (`notify.sh`, `ding.sh`) are still copied into `home/hooks/` so they can be reused if a future Codex version adds an equivalent event. |
+| `Notification` / permission notification behavior | not in `hooks.json` | modified | Native notification config and `notify.sh` are excluded. The Stop `ding.sh` command is retained in `hooks.json` and made portable for Windows. |
 
 ### Script files
 
@@ -76,7 +76,7 @@ Source: `windows-claude-code/claude/settings.template.json` `hooks` block, plus 
 | `hooks/bash-guard.sh` | `home/hooks/bash-guard.sh` | kept | byte-identical |
 | `hooks/command-log.sh` | `home/hooks/command-log.sh` | kept | byte-identical |
 | `hooks/compact-reinject.sh` | `home/hooks/compact-reinject.sh` | kept | byte-identical |
-| `hooks/ding.sh` | `home/hooks/ding.sh` | kept | Referenced only from dropped Notification event; left in place for manual reuse. |
+| `hooks/ding.sh` | `home/hooks/ding.sh` | modified | Retained for the Stop hook and rewritten to use macOS `afplay`, Windows PowerShell beep, or terminal bell fallback. |
 | `hooks/global-memory-symlink.sh` | `home/hooks/global-memory-symlink.sh` | kept | byte-identical |
 | `hooks/gsd-check-update.js` | `home/hooks/gsd-check-update.js` | kept | byte-identical |
 | `hooks/gsd-context-monitor.js` | `home/hooks/gsd-context-monitor.js` | kept | byte-identical |
@@ -84,7 +84,7 @@ Source: `windows-claude-code/claude/settings.template.json` `hooks` block, plus 
 | `hooks/gsd-read-guard.js` | `home/hooks/gsd-read-guard.js` | kept | byte-identical |
 | `hooks/gsd-statusline.js` | `home/hooks/gsd-statusline.js` | kept | byte-identical (Codex statusline use unconfirmed; kept for parity) |
 | `hooks/lint-on-edit.sh` | `home/hooks/lint-on-edit.sh` | kept | byte-identical |
-| `hooks/notify.sh` | `home/hooks/notify.sh` | kept | byte-identical (referenced only from dropped Notification event) |
+| `hooks/notify.sh` | not copied | dropped | Permission-request/native notification behavior is intentionally excluded from the Windows mirror. |
 | `hooks/protect-files.sh` | `home/hooks/protect-files.sh` | kept | byte-identical |
 | `hooks/scan-secrets.sh` | `home/hooks/scan-secrets.sh` | kept | byte-identical |
 | `hooks/verify-before-stop.sh` | `home/hooks/verify-before-stop.sh` | kept | byte-identical |

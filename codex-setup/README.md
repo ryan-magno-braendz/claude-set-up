@@ -1,6 +1,6 @@
-# codex-from-claude
+# codex-setup
 
-A self-contained Codex CLI configuration derived from Ryan's working Claude Code setup. Drop this folder onto a fresh machine, run one script, and Codex starts up with the same global instructions, skills, agents, hooks, and MCP servers as the source CC environment.
+A self-contained Codex CLI configuration derived from the live Codex setup on this machine. Drop this folder onto a fresh machine, run one script, and Codex starts up with the same global instructions, skills, agents, hooks, plugins, and active MCP config as the source environment. Native notification config and the permission-request notification hook are excluded; the Stop `ding.sh` hook is included.
 
 ## Files
 
@@ -33,7 +33,7 @@ macOS or Linux:
 
 Both support `--dry-run` (or `-DryRun` on PowerShell) for a preview without writing.
 
-After the script finishes, set environment variables (`TAVILY_API_KEY`, `N8N_HOSTINGER_API_KEY`, `N8N_CITYFLEET_API_KEY`) and run `codex --version` to confirm.
+After the script finishes, set `TAVILY_API_KEY` if you want Tavily MCP available immediately, then run `codex --version` to confirm.
 
 Full guide, prerequisites, and troubleshooting: `BOOTSTRAP.md`.
 
@@ -44,8 +44,8 @@ Full guide, prerequisites, and troubleshooting: `BOOTSTRAP.md`.
 | `home/AGENTS.md` | Codex-targeted global instructions from the live setup. |
 | `home/CLAUDE.md` | Original Claude fallback project doc. |
 | `home/config.toml` | Current Codex settings, MCP servers, plugins, GSD agent registrations, with machine paths templated as `__CODEX_HOME__`. |
-| `home/hooks.json` | Current non-notification hooks. Notification and permission-request notification hooks are intentionally excluded. |
-| `home/hooks/` | Non-notification hook scripts used by the live setup. |
+| `home/hooks.json` | Current hooks. Native notification and permission-request notification hooks are intentionally excluded; Stop `ding.sh` is retained. |
+| `home/hooks/` | Hook scripts used by the live setup, including portable `ding.sh`. |
 | `home/skills/` | Current live skill directories, including GSD, gstack, n8n, and plugin-provided skills. |
 | `home/agents/` | Current live subagent TOML and markdown definitions. |
 | `home/rules/` | Layered coding rules. |
@@ -59,7 +59,7 @@ Full guide, prerequisites, and troubleshooting: `BOOTSTRAP.md`.
 ## What was not migrated
 
 Short list:
-- Notification hooks and native notification config.
+- Permission-request notification hook, `notify.sh`, and native notification config. Stop `ding.sh` is included.
 - API keys, login state, session history, logs, caches, SQLite runtime DBs, shell snapshots, and installation IDs.
 - Mac-only project trust entries and hook trust hashes.
 

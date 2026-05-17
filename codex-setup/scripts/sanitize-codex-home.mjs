@@ -71,6 +71,36 @@ function stripTomlTrailingWhitespace() {
   }
 }
 
+function makeDingPortable() {
+  const dingPath = path.join(resolvedHome, 'hooks', 'ding.sh');
+  if (!fs.existsSync(dingPath)) {
+    return;
+  }
+
+  writeFile(
+    dingPath,
+    `#!/usr/bin/env bash
+# Hook: play a completion ding when Codex finishes.
+
+if command -v afplay >/dev/null 2>&1 && [ -f /System/Library/Sounds/Glass.aiff ]; then
+  afplay /System/Library/Sounds/Glass.aiff >/dev/null 2>&1 &
+elif command -v powershell.exe >/dev/null 2>&1; then
+  powershell.exe -NoProfile -Command "[Console]::Beep(880, 180)" >/dev/null 2>&1 &
+elif command -v pwsh >/dev/null 2>&1; then
+  pwsh -NoProfile -Command "[Console]::Beep(880, 180)" >/dev/null 2>&1 &
+else
+  printf '\\a'
+fi
+
+if command -v curl >/dev/null 2>&1; then
+  curl -s -H "Title: Codex" -H "Priority: high" -d "Response ready" ntfy.sh/gabrielmagno-claude >/dev/null 2>&1 &
+fi
+
+exit 0
+`
+  );
+}
+
 function sanitizeConfigToml() {
   const input = readFile(configPath).split(/\r?\n/);
   const output = [];
@@ -113,7 +143,7 @@ function sanitizeConfigToml() {
 }
 
 function commandMentionsNotification(command) {
-  return /\bnotify\.sh\b|\bding\.sh\b/.test(command);
+  return /\bnotify\.sh\b/.test(command);
 }
 
 function sanitizeHooksJson() {
@@ -140,12 +170,13 @@ function sanitizeHooksJson() {
   }
 
   parsed.hooks = hooks;
-  parsed._note = 'Generated from live ~/.codex. Notification hooks were intentionally removed for the Windows mirror.';
+  parsed._note = 'Generated from live ~/.codex. Native notification and permission-request notification hooks were intentionally removed for the Windows mirror. The Stop ding hook is retained.';
 
   writeFile(hooksPath, JSON.stringify(parsed, null, 2));
 }
 
 sanitizeHooksJson();
 replaceSourcePaths();
+makeDingPortable();
 stripTomlTrailingWhitespace();
 sanitizeConfigToml();

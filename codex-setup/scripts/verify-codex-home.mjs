@@ -47,7 +47,6 @@ const forbiddenRelativePaths = [
 const forbiddenGlobalText = ['/Users/gabrielmagno/.codex'];
 const forbiddenRuntimeNotificationText = [
   'notify.sh',
-  'ding.sh',
   'PermissionRequest',
   'notification_method',
   'notification_condition',

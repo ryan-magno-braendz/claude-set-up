@@ -49,7 +49,7 @@ copy_path "plugins/cache/"
 copy_path "vendor_imports/"
 copy_path ".tmp/bundled-marketplaces/openai-bundled/"
 
-rm -f "$TMP/home/hooks/notify.sh" "$TMP/home/hooks/ding.sh"
+rm -f "$TMP/home/hooks/notify.sh"
 
 node "$SCRIPT_DIR/sanitize-codex-home.mjs" "$TMP/home"
 node "$SCRIPT_DIR/verify-codex-home.mjs" "$TMP/home"

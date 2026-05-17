@@ -96,8 +96,8 @@ Next steps:
      (Add to your shell rc, or use a .env loader.)
   2. Run: codex --version
   3. Verify skills: codex /skills
-  4. Verify hooks: edit a file under a Codex session, watch for non-notification hook output.
-     Notification hooks are intentionally excluded from this mirror.
+  4. Verify hooks: edit a file under a Codex session, watch for hook output.
+     Native notification hooks are excluded; the Stop ding hook is included.
 
 Troubleshooting and full guide: BOOTSTRAP.md (sibling of this script).
 EOF

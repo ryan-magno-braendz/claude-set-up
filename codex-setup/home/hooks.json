@@ -1,5 +1,5 @@
 {
-  "_note": "Generated from live ~/.codex. Notification hooks were intentionally removed for the Windows mirror.",
+  "_note": "Generated from live ~/.codex. Native notification and permission-request notification hooks were intentionally removed for the Windows mirror. The Stop ding hook is retained.",
   "hooks": {
     "SessionStart": [
       {
@@ -65,6 +65,11 @@
             "type": "command",
             "command": "bash \"$HOME/.codex/hooks/verify-before-stop.sh\"",
             "timeout": 120
+          },
+          {
+            "type": "command",
+            "command": "bash \"$HOME/.codex/hooks/ding.sh\"",
+            "timeout": 5
           }
         ]
       }

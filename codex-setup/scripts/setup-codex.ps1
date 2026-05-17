@@ -95,7 +95,7 @@ if (-not (Get-Command bash -ErrorAction SilentlyContinue)) {
 }
 Write-Host "  3. Run: codex --version"
 Write-Host "  4. Verify skills: codex /skills"
-Write-Host "  5. Verify hooks: edit a file under a Codex session, watch for non-notification hook output."
-Write-Host "     Notification hooks are intentionally excluded from this Windows mirror."
+Write-Host "  5. Verify hooks: edit a file under a Codex session, watch for hook output."
+Write-Host "     Native notification hooks are excluded; the Stop ding hook is included."
 Write-Host ""
 Write-Host "Troubleshooting and full guide: BOOTSTRAP.md (sibling of this script)."

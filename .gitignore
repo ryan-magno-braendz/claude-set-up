@@ -16,7 +16,7 @@ Thumbs.db
 # That nested .gitignore is preserved byte-identical from the source CC config.
 
 # Local-only Codex credential transfer overlays. Do not commit.
-codex-from-claude/private-home/
-codex-from-claude/**/*.private.*
-codex-from-claude/**/auth.json
-codex-from-claude/**/.env
+codex-setup/private-home/
+codex-setup/**/*.private.*
+codex-setup/**/auth.json
+codex-setup/**/.env

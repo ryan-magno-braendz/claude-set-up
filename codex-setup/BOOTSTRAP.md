@@ -1,15 +1,17 @@
-# Codex Setup From Claude Code
+# Codex Setup
 
 ## What this is
 
-A self-contained Codex CLI configuration derived from a working Claude Code (CC) setup. Running the install script copies everything in `home/` into your user `~/.codex/` directory: an `AGENTS.md` global instruction file, a `config.toml` with feature flags and MCP servers, hooks, layered coding rules, 69 skills, and 46 subagent definitions.
+A self-contained Codex CLI configuration derived from the current live Codex setup. Running the install script copies everything in `home/` into your user `~/.codex/` directory: an `AGENTS.md` global instruction file, a `config.toml` with feature flags, active MCP config, plugin config, hooks, layered coding rules, 115 skill directories, and 94 agent files.
 
 What this folder does install:
 - `AGENTS.md` (global instructions, with `CLAUDE.md` kept as fallback).
-- `config.toml` with three MCP servers (tavily, two n8n flavors), feature flags for hooks and skills, project doc fallback to `CLAUDE.md`.
+- `config.toml` with Tavily MCP, plugin registrations, feature flags for hooks and skills, project doc fallback to `CLAUDE.md`.
 - `hooks.json` plus the script files under `hooks/` for the four Codex-supported events (SessionStart, Stop, PreToolUse, PostToolUse).
-- 69 skills under `skills/`, all in directory form with `SKILL.md` plus optional assets.
-- 46 subagent TOMLs under `agents/`.
+- 115 skill directories under `skills/`, all in directory form with `SKILL.md` plus optional assets.
+- 94 files under `agents/`, including TOML and markdown agent definitions.
+- GSD runtime files under `get-shit-done/`.
+- Plugin cache and the referenced bundled marketplace.
 - `rules/` (common plus per-language guidance).
 - `memory/` (reference, Codex does not auto-load these; the global rules tell the assistant when to read them).
 - `reference/` (slash commands, plugin scaffolding from CC that has no Codex analog; kept for human inspection).
@@ -35,11 +37,7 @@ Secrets are not bundled. After install, run:
 ```powershell
 codex login
 $TavilyApiKey = Read-Host "Enter TAVILY_API_KEY"
-$N8nHostingerApiKey = Read-Host "Enter N8N_HOSTINGER_API_KEY"
-$N8nCityfleetApiKey = Read-Host "Enter N8N_CITYFLEET_API_KEY"
 [Environment]::SetEnvironmentVariable("TAVILY_API_KEY", $TavilyApiKey, "User")
-[Environment]::SetEnvironmentVariable("N8N_HOSTINGER_API_KEY", $N8nHostingerApiKey, "User")
-[Environment]::SetEnvironmentVariable("N8N_CITYFLEET_API_KEY", $N8nCityfleetApiKey, "User")
 ```
 
 ## Prerequisites
@@ -56,7 +54,7 @@ The recommended flow runs a dry run before the real install. The dry run prints 
 
 macOS or Linux:
 ```bash
-# 1. From this directory (codex-from-claude/), preview:
+# 1. From this directory (codex-setup/), preview:
 ./scripts/setup-codex.sh --dry-run
 
 # 2. Inspect the printed file list and target tree.
@@ -67,7 +65,7 @@ macOS or Linux:
 
 Windows (PowerShell):
 ```powershell
-# 1. From this directory (codex-from-claude/), preview:
+# 1. From this directory (codex-setup/), preview:
 .\scripts\setup-codex.ps1 -DryRun
 
 # 2. Inspect the printed file list and target tree.
@@ -112,13 +110,11 @@ Copy-Item -Path 'home/*' -Destination "$env:USERPROFILE/.codex" -Recurse -Force
 
 ## Set environment variables
 
-The MCP servers in `config.toml` reference three env vars:
+The active MCP server in `config.toml` references one env var:
 
 | Variable | Used by | Where to get it |
 |---|---|---|
 | `TAVILY_API_KEY` | tavily MCP | tavily.com dashboard |
-| `N8N_HOSTINGER_API_KEY` | n8n_hostinger MCP | the SECRETS.md transferred from the source machine |
-| `N8N_CITYFLEET_API_KEY` | n8n_cityfleet MCP | same SECRETS.md |
 
 ### Concrete `.env` template
 
@@ -129,8 +125,6 @@ Save the snippet below as `~/.codex/.env` and source it from your shell rc. Repl
 # Source this from .bashrc / .zshrc:  set -a; source "$HOME/.codex/.env"; set +a
 
 TAVILY_API_KEY=replace_me_tavily
-N8N_HOSTINGER_API_KEY=replace_me_n8n_hostinger_jwt
-N8N_CITYFLEET_API_KEY=replace_me_n8n_cityfleet_jwt
 ```
 
 PowerShell equivalent (`~/.codex/env.ps1`, dot-source from `$PROFILE`):
@@ -140,11 +134,7 @@ PowerShell equivalent (`~/.codex/env.ps1`, dot-source from `$PROFILE`):
 # Dot-source from $PROFILE:  . "$HOME/.codex/env.ps1"
 
 $env:TAVILY_API_KEY = 'replace_me_tavily'
-$env:N8N_HOSTINGER_API_KEY = 'replace_me_n8n_hostinger_jwt'
-$env:N8N_CITYFLEET_API_KEY = 'replace_me_n8n_cityfleet_jwt'
 ```
-
-Both n8n keys are time-limited JWTs and need rotation periodically. Rotate at the n8n instance's API key page, then update the env files.
 
 ## Verification
 
@@ -188,7 +178,7 @@ Available skills:
   agentic-engineering     Patterns for AI agent code.
   autoresearch            Run autonomous 3-round web research.
   ...
-  (69 entries total)
+  (115 skill directories installed)
 ```
 Fail: empty list means skills feature flag is wrong. See "Skills not loading" below.
 
@@ -209,8 +199,6 @@ Expected output:
 ```
 MCP servers:
   tavily          (stdio) tavily-mcp@latest
-  n8n_hostinger   (stdio) n8n-mcp
-  n8n_cityfleet   (stdio) n8n-mcp@latest
 ```
 Fail: server listed but tool calls hang. See "MCP server timing out" below.
 
@@ -221,9 +209,9 @@ Fail: server listed but tool calls hang. See "MCP server timing out" below.
 ~/.codex/CLAUDE.md           1 file
 ~/.codex/config.toml         1 file
 ~/.codex/hooks.json          1 file
-~/.codex/hooks/             17 script files (.sh and .js)
-~/.codex/skills/            69 entries at depth 1 (some are symlinks into gstack/)
-~/.codex/agents/            46 .toml files
+~/.codex/hooks/             16 hook script files (.sh and .js), including ding.sh
+~/.codex/skills/            115 directories at depth 1
+~/.codex/agents/            94 files
 ~/.codex/rules/             44 files (common plus 6 language folders)
 ~/.codex/memory/            10 files
 ~/.codex/reference/         (variable; manual review queue)
@@ -231,15 +219,15 @@ Fail: server listed but tool calls hang. See "MCP server timing out" below.
 Quick sanity check:
 ```bash
 test -f ~/.codex/AGENTS.md && \
-echo "agent tomls: $(ls ~/.codex/agents/*.toml | wc -l)" && \
-echo "skills: $(ls ~/.codex/skills/ | wc -l)" && \
+echo "agent files: $(find ~/.codex/agents -maxdepth 1 -type f | wc -l)" && \
+echo "skills: $(find ~/.codex/skills -maxdepth 1 -mindepth 1 -type d | wc -l)" && \
 echo "hook scripts: $(ls ~/.codex/hooks/ | wc -l)"
 ```
 Expected:
 ```
-agent tomls:       46
-skills:       69
-hook scripts:       17
+agent files:       94
+skills:       115
+hook scripts:       16
 ```
 
 ## Troubleshooting
@@ -346,10 +334,7 @@ Symptoms: `/mcp` lists the server but tool calls hang or return errors.
 
 1. Confirm the env var resolves. Run `echo $TAVILY_API_KEY` (or `echo $env:TAVILY_API_KEY` in PowerShell). Empty value means the variable is not loaded.
 2. Run the MCP command manually to see what happens: `npx -y tavily-mcp@latest`.
-3. For the two n8n flavors, confirm the JWT has not expired. Decode with `jwt.io` or:
-   ```bash
-   echo "$N8N_HOSTINGER_API_KEY" | jq -R 'split(".") | .[1] | @base64d | fromjson'
-   ```
+3. If Tavily still fails after `TAVILY_API_KEY` is set, restart the shell and Codex so the environment is visible to the MCP server.
 4. For HTTP-transport MCPs (none active by default; see `reference/mcp-configs/` for the optional catalog), confirm the URL is reachable.
 
 ### `bash` not found on Windows
