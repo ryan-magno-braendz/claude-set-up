@@ -61,6 +61,18 @@ if (Test-Path $Dst) {
 New-Item -Path $Dst -ItemType Directory -Force | Out-Null
 Copy-Item -Path (Join-Path $Src '*') -Destination $Dst -Recurse -Force
 
+$CodexHomeForConfig = $Dst.Replace('\', '/')
+$TextExtensions = @('*.toml', '*.json', '*.md', '*.sh', '*.js', '*.mjs', '*.ps1')
+foreach ($Pattern in $TextExtensions) {
+    Get-ChildItem -Path $Dst -Recurse -File -Filter $Pattern | ForEach-Object {
+        $Content = Get-Content -Path $_.FullName -Raw
+        if ($Content.Contains('__CODEX_HOME__')) {
+            $Content = $Content.Replace('__CODEX_HOME__', $CodexHomeForConfig)
+            Set-Content -Path $_.FullName -Value $Content -NoNewline
+        }
+    }
+}
+
 $DstFileCount = (Get-ChildItem -Path $Dst -Recurse -File).Count
 Write-Host ""
 Write-Host "Copied $DstFileCount files."
@@ -78,8 +90,12 @@ Write-Host "  1. Set environment variables: TAVILY_API_KEY, N8N_HOSTINGER_API_KE
 Write-Host "     Add to your PowerShell profile or a .env loader."
 Write-Host "  2. Ensure Git Bash is on PATH so hook .sh scripts can run."
 Write-Host "     (winget install Git.Git, then add C:\Program Files\Git\bin to PATH.)"
+if (-not (Get-Command bash -ErrorAction SilentlyContinue)) {
+    Write-Warning "bash was not found on PATH. Install Git for Windows before relying on shell hooks."
+}
 Write-Host "  3. Run: codex --version"
 Write-Host "  4. Verify skills: codex /skills"
-Write-Host "  5. Verify hooks: edit a file under a Codex session, watch for the lint hook output."
+Write-Host "  5. Verify hooks: edit a file under a Codex session, watch for non-notification hook output."
+Write-Host "     Notification hooks are intentionally excluded from this Windows mirror."
 Write-Host ""
 Write-Host "Troubleshooting and full guide: BOOTSTRAP.md (sibling of this script)."

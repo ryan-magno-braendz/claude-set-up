@@ -1,0 +1,20 @@
+{
+  "name": "openai-bundled",
+  "interface": {
+    "displayName": "OpenAI Bundled"
+  },
+  "plugins": [
+    {
+      "name": "latex-tectonic",
+      "source": {
+        "source": "local",
+        "path": "./plugins/latex-tectonic"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Research"
+    }
+  ]
+}

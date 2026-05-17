@@ -1,9 +1,9 @@
 #!/bin/bash
-# Ensures the project memory dir is a symlink to the global ~/.claude/memory/
+# Ensures the project memory dir is a symlink to the global ~/.codex/memory/
 # Runs on SessionStart to handle new projects automatically.
 
-GLOBAL_MEMORY="$HOME/.claude/memory"
-PROJECT_DIR="$HOME/.claude/projects"
+GLOBAL_MEMORY="$HOME/.codex/memory"
+PROJECT_DIR="$HOME/.codex/projects"
 
 # Ensure global memory directory exists
 mkdir -p "$GLOBAL_MEMORY"

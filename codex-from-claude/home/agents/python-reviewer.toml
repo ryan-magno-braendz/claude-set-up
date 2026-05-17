@@ -3,7 +3,7 @@ description = "Expert Python code reviewer specializing in PEP 8 compliance, Pyt
 model = "gpt-5-codex"
 sandbox_mode = "workspace-write"
 
-prompt = '''
+developer_instructions = '''
 You are a senior Python code reviewer ensuring high standards of Pythonic code and best practices.
 
 When invoked:

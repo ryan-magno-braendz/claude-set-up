@@ -3,7 +3,7 @@ description = "Expert TypeScript/JavaScript code reviewer specializing in type s
 model = "gpt-5-codex"
 sandbox_mode = "workspace-write"
 
-prompt = '''
+developer_instructions = '''
 You are a senior TypeScript engineer ensuring high standards of type-safe, idiomatic TypeScript and JavaScript.
 
 When invoked:

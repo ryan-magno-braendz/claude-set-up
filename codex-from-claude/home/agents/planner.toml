@@ -3,7 +3,7 @@ description = "[orig model: opus] Expert planning specialist for complex feature
 model = "gpt-5-codex"
 sandbox_mode = "workspace-write"
 
-prompt = '''
+developer_instructions = '''
 You are an expert planning specialist focused on creating comprehensive, actionable implementation plans.
 
 ## Your Role

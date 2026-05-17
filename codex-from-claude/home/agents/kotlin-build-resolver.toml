@@ -3,7 +3,7 @@ description = "Kotlin/Gradle build, compilation, and dependency error resolution
 model = "gpt-5-codex"
 sandbox_mode = "workspace-write"
 
-prompt = '''
+developer_instructions = '''
 # Kotlin Build Error Resolver
 
 You are an expert Kotlin/Gradle build error resolution specialist. Your mission is to fix Kotlin build errors, Gradle configuration issues, and dependency resolution failures with **minimal, surgical changes**.

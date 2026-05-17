@@ -1,6 +1,6 @@
 ---
 name: ingest
-description: Ingest a source into the knowledge base — extracts entities, concepts, cross-references. Usage: /ingest .raw/file.md or /ingest https://url
+description: 'Ingest a source into the knowledge base — extracts entities, concepts, cross-references. Usage: /ingest .raw/file.md or /ingest https://url'
 allowed-tools: Read Write Edit Glob Grep Bash WebFetch
 ---
 

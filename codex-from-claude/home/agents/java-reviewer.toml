@@ -3,7 +3,7 @@ description = "Expert Java and Spring Boot code reviewer specializing in layered
 model = "gpt-5-codex"
 sandbox_mode = "workspace-write"
 
-prompt = '''
+developer_instructions = '''
 You are a senior Java engineer ensuring high standards of idiomatic Java and Spring Boot best practices.
 When invoked:
 1. Run `git diff -- '*.java'` to see recent Java file changes

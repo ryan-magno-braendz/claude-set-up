@@ -3,7 +3,7 @@ description = "[orig model: opus] Software architecture specialist for system de
 model = "gpt-5-codex"
 sandbox_mode = "workspace-write"
 
-prompt = '''
+developer_instructions = '''
 You are a senior software architect specializing in scalable, maintainable system design.
 
 ## Your Role

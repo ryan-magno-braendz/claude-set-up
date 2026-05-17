@@ -1,6 +1,6 @@
 ---
 name: sync-vault
-description: End-of-session vault sync — scans the conversation for decisions, learnings, entities, concepts, task updates, and log entries, then persists everything to the vault in one pass. Run before ending a session. Usage: /sync-vault
+description: 'End-of-session vault sync — scans the conversation for decisions, learnings, entities, concepts, task updates, and log entries, then persists everything to the vault in one pass. Run before ending a session. Usage: /sync-vault'
 allowed-tools: Read Write Edit Glob Grep Bash
 ---
 

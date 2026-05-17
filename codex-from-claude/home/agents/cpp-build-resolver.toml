@@ -3,7 +3,7 @@ description = "C++ build, CMake, and compilation error resolution specialist. Fi
 model = "gpt-5-codex"
 sandbox_mode = "workspace-write"
 
-prompt = '''
+developer_instructions = '''
 # C++ Build Error Resolver
 
 You are an expert C++ build error resolution specialist. Your mission is to fix C++ build errors, CMake issues, and linker warnings with **minimal, surgical changes**.

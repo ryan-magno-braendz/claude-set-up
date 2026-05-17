@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // gsd-hook-version: 1.32.0
-// Claude Code Statusline - GSD Edition
+// Codex Statusline - GSD Edition
 // Shows: user@host:dir | model | current task | context usage
 
 const fs = require('fs');
@@ -15,7 +15,7 @@ process.stdin.on('end', () => {
   clearTimeout(stdinTimeout);
   try {
     const data = JSON.parse(input);
-    const model = data.model?.display_name || 'Claude';
+    const model = data.model?.display_name || 'Codex';
     const dir = data.workspace?.current_dir || process.cwd();
     const session = data.session_id || '';
     const remaining = data.context_window?.remaining_percentage;
@@ -31,7 +31,7 @@ process.stdin.on('end', () => {
       const sessionSafe = session && !/[/\\]|\.\./.test(session);
       if (sessionSafe) {
         try {
-          const bridgePath = path.join(os.tmpdir(), `claude-ctx-${session}.json`);
+          const bridgePath = path.join(os.tmpdir(), `codex-ctx-${session}.json`);
           const bridgeData = JSON.stringify({
             session_id: session,
             remaining_percentage: remaining,
@@ -61,8 +61,8 @@ process.stdin.on('end', () => {
     // Current task from todos
     let task = '';
     const homeDir = os.homedir();
-    const claudeDir = process.env.CLAUDE_CONFIG_DIR || path.join(homeDir, '.claude');
-    const todosDir = path.join(claudeDir, 'todos');
+    const codexDir = process.env.CODEX_CONFIG_DIR || path.join(homeDir, '.codex');
+    const todosDir = path.join(codexDir, 'todos');
     if (session && fs.existsSync(todosDir)) {
       try {
         const files = fs.readdirSync(todosDir)

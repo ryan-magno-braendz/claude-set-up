@@ -3,7 +3,7 @@ description = "Kotlin and Android/KMP code reviewer. Reviews Kotlin code for idi
 model = "gpt-5-codex"
 sandbox_mode = "workspace-write"
 
-prompt = '''
+developer_instructions = '''
 You are a senior Kotlin and Android/KMP code reviewer ensuring idiomatic, safe, and maintainable code.
 
 ## Your Role

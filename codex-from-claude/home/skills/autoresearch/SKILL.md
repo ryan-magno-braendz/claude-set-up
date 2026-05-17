@@ -1,6 +1,6 @@
 ---
 name: autoresearch
-description: Run autonomous 3-round web research on a topic, file all findings into the knowledge base. Usage: /autoresearch [topic]
+description: 'Run autonomous 3-round web research on a topic, file all findings into the knowledge base. Usage: /autoresearch [topic]'
 allowed-tools: Read Write Edit Glob Grep Bash WebFetch WebSearch
 ---
 

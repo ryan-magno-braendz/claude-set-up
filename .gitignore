@@ -14,3 +14,9 @@ Thumbs.db
 
 # windows-claude-code/ has its own .gitignore (CC-specific runtime exclusions).
 # That nested .gitignore is preserved byte-identical from the source CC config.
+
+# Local-only Codex credential transfer overlays. Do not commit.
+codex-from-claude/private-home/
+codex-from-claude/**/*.private.*
+codex-from-claude/**/auth.json
+codex-from-claude/**/.env

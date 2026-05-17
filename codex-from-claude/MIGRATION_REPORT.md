@@ -22,6 +22,23 @@ Approach: hand-port (cc2codex was not used; the source mirror lives at `claude/`
 | Items dropped | 9 (plugin scaffolding listed below) |
 | Manual-review queue items | 4 (commands/, ecc/, get-shit-done/, teams/) |
 
+## 2026-05-17 Windows Mirror Refresh
+
+Included from live `~/.codex`:
+
+- Current `skills/`, including `.system`, GSD skills, gstack skills, n8n skills, and plugin-provided skills.
+- Current `agents/`, including GSD markdown and TOML agent definitions.
+- Current `get-shit-done/` runtime package, templates, references, and SDK files.
+- Current OpenAI-curated plugin cache for Notion, Supabase, and Superpowers.
+- Current local OpenAI bundled marketplace at `.tmp/bundled-marketplaces/openai-bundled/`, because `config.toml` references it directly.
+- Current `memory/`, `rules/`, `reference/`, `vendor_imports/`, and version metadata.
+
+Excluded intentionally:
+
+- Notification hooks and native notification config.
+- `auth.json`, `.env`, API keys, login state, session history, logs, SQLite runtime DBs, shell snapshots, temporary directories other than the referenced bundled marketplace, and installation IDs.
+- Mac-only project trust entries and hook trust hashes.
+
 ## Skills
 
 Source: `windows-claude-code/claude/skills/` (69 first-level entries).

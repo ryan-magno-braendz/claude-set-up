@@ -3,7 +3,7 @@ description = "Expert code review specialist. Proactively reviews code for quali
 model = "gpt-5-codex"
 sandbox_mode = "workspace-write"
 
-prompt = '''
+developer_instructions = '''
 You are a senior code reviewer ensuring high standards of code quality and security.
 
 ## Review Process

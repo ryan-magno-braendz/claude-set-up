@@ -1,5 +1,5 @@
 {
-  "_note": "Generated from windows-claude-code/claude/settings.template.json hooks block. Notification event dropped (not supported by Codex). All paths rewritten from $HOME/.claude/hooks/ to $HOME/.codex/hooks/. Wrap value of CODEX_HOOKS_DEBUG=1 in shell to trace.",
+  "_note": "Generated from live ~/.codex. Notification hooks were intentionally removed for the Windows mirror.",
   "hooks": {
     "SessionStart": [
       {
@@ -21,11 +21,39 @@
         ]
       },
       {
-        "matcher": "compact",
+        "matcher": "startup|resume|clear",
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$HOME/.codex/hooks/compact-reinject.sh\""
+            "command": "bash \"$HOME/.codex/hooks/compact-reinject.sh\"",
+            "timeout": 10,
+            "statusMessage": "Loading project context"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$HOME/.codex/hooks/compact-reinject.sh\"",
+            "timeout": 10,
+            "statusMessage": "Saving compact context"
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$HOME/.codex/hooks/compact-reinject.sh\"",
+            "timeout": 10,
+            "statusMessage": "Restoring compact context"
           }
         ]
       }
@@ -37,11 +65,6 @@
             "type": "command",
             "command": "bash \"$HOME/.codex/hooks/verify-before-stop.sh\"",
             "timeout": 120
-          },
-          {
-            "type": "command",
-            "command": "bash \"$HOME/.codex/hooks/ding.sh\"",
-            "timeout": 5
           }
         ]
       }

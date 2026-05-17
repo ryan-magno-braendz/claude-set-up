@@ -16,8 +16,31 @@ What this folder does install:
 
 What this folder does not install:
 - The Codex CLI itself. Install separately.
-- Anthropic plugins, marketplaces, or `~/.claude/`. Those stay with the original CC setup.
 - API keys. Set them as environment variables before first run.
+
+## Windows Prerequisites
+
+Install these before running `scripts/setup-codex.ps1`:
+
+```powershell
+winget install Git.Git
+winget install OpenJS.NodeJS.LTS
+npm install -g @openai/codex
+```
+
+Restart PowerShell after installing Git so `bash` is on `PATH`.
+
+Secrets are not bundled. After install, run:
+
+```powershell
+codex login
+$TavilyApiKey = Read-Host "Enter TAVILY_API_KEY"
+$N8nHostingerApiKey = Read-Host "Enter N8N_HOSTINGER_API_KEY"
+$N8nCityfleetApiKey = Read-Host "Enter N8N_CITYFLEET_API_KEY"
+[Environment]::SetEnvironmentVariable("TAVILY_API_KEY", $TavilyApiKey, "User")
+[Environment]::SetEnvironmentVariable("N8N_HOSTINGER_API_KEY", $N8nHostingerApiKey, "User")
+[Environment]::SetEnvironmentVariable("N8N_CITYFLEET_API_KEY", $N8nCityfleetApiKey, "User")
+```
 
 ## Prerequisites
 

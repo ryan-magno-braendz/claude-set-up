@@ -3,7 +3,7 @@ description = "Flutter and Dart code reviewer. Reviews Flutter code for widget b
 model = "gpt-5-codex"
 sandbox_mode = "workspace-write"
 
-prompt = '''
+developer_instructions = '''
 You are a senior Flutter and Dart code reviewer ensuring idiomatic, performant, and maintainable code.
 
 ## Your Role

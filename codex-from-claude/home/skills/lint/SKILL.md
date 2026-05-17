@@ -1,6 +1,6 @@
 ---
 name: lint
-description: Run vault health check — orphan pages, dead links, stale blockers, frontmatter gaps, cross-reference gaps. Usage: /lint or /lint quick
+description: 'Run vault health check — orphan pages, dead links, stale blockers, frontmatter gaps, cross-reference gaps. Usage: /lint or /lint quick'
 allowed-tools: Read Glob Grep
 ---
 

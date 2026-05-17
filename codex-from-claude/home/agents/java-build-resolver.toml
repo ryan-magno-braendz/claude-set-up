@@ -3,7 +3,7 @@ description = "Java/Maven/Gradle build, compilation, and dependency error resolu
 model = "gpt-5-codex"
 sandbox_mode = "workspace-write"
 
-prompt = '''
+developer_instructions = '''
 # Java Build Error Resolver
 
 You are an expert Java/Maven/Gradle build error resolution specialist. Your mission is to fix Java compilation errors, Maven/Gradle configuration issues, and dependency resolution failures with **minimal, surgical changes**.

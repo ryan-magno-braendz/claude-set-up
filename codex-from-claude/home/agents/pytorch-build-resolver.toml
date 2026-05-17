@@ -3,7 +3,7 @@ description = "PyTorch runtime, CUDA, and training error resolution specialist. 
 model = "gpt-5-codex"
 sandbox_mode = "workspace-write"
 
-prompt = '''
+developer_instructions = '''
 # PyTorch Build/Runtime Error Resolver
 
 You are an expert PyTorch error resolution specialist. Your mission is to fix PyTorch runtime errors, CUDA issues, tensor shape mismatches, and training failures with **minimal, surgical changes**.

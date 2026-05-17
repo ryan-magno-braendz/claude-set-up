@@ -36,7 +36,7 @@ esac
 
 # Skip files in non-testable directories
 case "$FILE_PATH" in
-  */.claude/*|*/public/*|*/static/*|*/assets/*|*/__mocks__/*) exit 0 ;;
+  */.codex/*|*/public/*|*/static/*|*/assets/*|*/__mocks__/*) exit 0 ;;
 esac
 
 # ──────────────────────────────────────────────

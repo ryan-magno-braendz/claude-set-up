@@ -10,7 +10,7 @@ if [ -z "$CMD" ]; then
   exit 0
 fi
 
-LOG_DIR="$HOME/.claude/logs"
+LOG_DIR="$HOME/.codex/logs"
 mkdir -p "$LOG_DIR"
 
 # Append as JSONL

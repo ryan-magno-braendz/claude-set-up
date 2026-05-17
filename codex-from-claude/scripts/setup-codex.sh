@@ -68,6 +68,10 @@ mkdir -p "$DST"
 # Copy contents (not the home/ directory itself)
 ( cd "$SRC" && tar c . ) | ( cd "$DST" && tar x )
 
+CODEX_HOME_FOR_CONFIG="$DST"
+find "$DST" -type f \( -name '*.toml' -o -name '*.json' -o -name '*.md' -o -name '*.sh' -o -name '*.js' -o -name '*.mjs' \) -print0 |
+  xargs -0 perl -0pi -e "s#__CODEX_HOME__#${CODEX_HOME_FOR_CONFIG}#g"
+
 # Make hooks executable
 if [ -d "$DST/hooks" ]; then
   find "$DST/hooks" -type f \( -name '*.sh' -o -name '*.js' \) -exec chmod +x {} +
@@ -92,7 +96,8 @@ Next steps:
      (Add to your shell rc, or use a .env loader.)
   2. Run: codex --version
   3. Verify skills: codex /skills
-  4. Verify hooks: edit a file under a Codex session, watch for the lint hook output.
+  4. Verify hooks: edit a file under a Codex session, watch for non-notification hook output.
+     Notification hooks are intentionally excluded from this mirror.
 
 Troubleshooting and full guide: BOOTSTRAP.md (sibling of this script).
 EOF

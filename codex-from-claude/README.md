@@ -19,7 +19,11 @@ From this directory:
 
 Windows:
 ```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\scripts\setup-codex.ps1 -DryRun
 .\scripts\setup-codex.ps1
+codex login
+codex --version
 ```
 
 macOS or Linux:
@@ -37,23 +41,26 @@ Full guide, prerequisites, and troubleshooting: `BOOTSTRAP.md`.
 
 | Path | Source equivalent |
 |---|---|
-| `home/AGENTS.md` | Codex-targeted rewrite of the global `CLAUDE.md`. |
-| `home/CLAUDE.md` | Original `CLAUDE.md` kept verbatim as the Codex fallback project doc. |
-| `home/config.toml` | Feature flags, MCP server definitions, project-doc fallback to `CLAUDE.md`. |
-| `home/hooks.json` | Codex hooks config, filtered to supported events (SessionStart, Stop, PreToolUse, PostToolUse). The Notification event was dropped. |
-| `home/hooks/` | 17 hook scripts copied verbatim. |
-| `home/skills/` | 69 skills, all directory-form. |
-| `home/agents/` | 46 subagent TOMLs converted from CC markdown. |
-| `home/rules/` | Layered coding rules (common plus 6 language folders). |
-| `home/memory/` | Reference memory files (Codex does not auto-load these; AGENTS.md says when to read them). |
-| `home/reference/` | Read-only archive of CC items with no Codex analog (slash commands, plugin scaffolding). Inspect manually; do not import. |
+| `home/AGENTS.md` | Codex-targeted global instructions from the live setup. |
+| `home/CLAUDE.md` | Original Claude fallback project doc. |
+| `home/config.toml` | Current Codex settings, MCP servers, plugins, GSD agent registrations, with machine paths templated as `__CODEX_HOME__`. |
+| `home/hooks.json` | Current non-notification hooks. Notification and permission-request notification hooks are intentionally excluded. |
+| `home/hooks/` | Non-notification hook scripts used by the live setup. |
+| `home/skills/` | Current live skill directories, including GSD, gstack, n8n, and plugin-provided skills. |
+| `home/agents/` | Current live subagent TOML and markdown definitions. |
+| `home/rules/` | Layered coding rules. |
+| `home/memory/` | Reference memory files. |
+| `home/reference/` | Read-only reference archive. |
+| `home/get-shit-done/` | Current local GSD runtime package and templates needed by GSD skills. |
+| `home/plugins/cache/` | Cached OpenAI-curated Notion, Supabase, and Superpowers plugin skills. |
+| `home/vendor_imports/` | Current vendor import metadata. |
+| `home/.tmp/bundled-marketplaces/openai-bundled/` | Local bundled marketplace referenced by `config.toml`; other `.tmp` runtime content is excluded. |
 
 ## What was not migrated
 
 Short list:
-- The CC Notification hook event (Codex has no equivalent).
-- 90+ CC slash commands (preserved under `home/reference/commands/` for manual review).
-- Plugin scaffolding (`ecc/`, `get-shit-done/`, `teams/`, plugin/marketplace manifests).
-- Anthropic model identifiers in agent files (mapped to `gpt-5-codex`; original model name kept in description for review).
+- Notification hooks and native notification config.
+- API keys, login state, session history, logs, caches, SQLite runtime DBs, shell snapshots, and installation IDs.
+- Mac-only project trust entries and hook trust hashes.
 
 Full per-artifact disposition: `MIGRATION_REPORT.md`.

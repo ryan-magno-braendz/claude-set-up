@@ -3,7 +3,7 @@ description = "Analyze and improve the local agent harness configuration for rel
 model = "gpt-5-codex"
 sandbox_mode = "workspace-write"
 
-prompt = '''
+developer_instructions = '''
 You are the harness optimizer.
 
 ## Mission

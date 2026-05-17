@@ -3,7 +3,7 @@ description = "Operate autonomous agent loops, monitor progress, and intervene s
 model = "gpt-5-codex"
 sandbox_mode = "workspace-write"
 
-prompt = '''
+developer_instructions = '''
 You are the loop operator.
 
 ## Mission

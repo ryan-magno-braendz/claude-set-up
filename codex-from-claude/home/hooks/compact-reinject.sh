@@ -1,9 +1,16 @@
 #!/bin/bash
-# Hook: SessionStart (compact) — Re-inject project context after compaction
-# Reads project-status.md and architecture.md so Claude doesn't lose context.
+# Hook: SessionStart/PostCompact - Re-inject project context after compaction
+# Reads project-status.md and architecture.md so Codex doesn't lose context.
 
 INPUT=$(cat)
 CWD=$(echo "$INPUT" | jq -r '.cwd // "."')
+HOOK_EVENT=$(echo "$INPUT" | jq -r '.hook_event_name // ""')
+
+# PreCompact is registered so the hook is active, but this script only needs to
+# emit context after compaction or on session start/resume.
+if [ "$HOOK_EVENT" = "PreCompact" ]; then
+  exit 0
+fi
 
 # Try to find docs directory
 DOCS_DIR=""

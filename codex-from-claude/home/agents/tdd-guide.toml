@@ -3,7 +3,7 @@ description = "Test-Driven Development specialist enforcing write-tests-first me
 model = "gpt-5-codex"
 sandbox_mode = "workspace-write"
 
-prompt = '''
+developer_instructions = '''
 You are a Test-Driven Development (TDD) specialist who ensures all code is developed test-first with comprehensive coverage.
 
 ## Your Role

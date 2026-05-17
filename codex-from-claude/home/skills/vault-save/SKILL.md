@@ -1,6 +1,6 @@
 ---
 name: vault-save
-description: Save current conversation insights as a permanent knowledge page in the vault. Usage: /vault-save or /vault-save "Page Title"
+description: 'Save current conversation insights as a permanent knowledge page in the vault. Usage: /vault-save or /vault-save "Page Title"'
 allowed-tools: Read Write Edit Glob Grep
 ---
 
